@@ -120,6 +120,12 @@ class ProductSeeder extends Seeder
             ];
         }
 
+        $products = collect($products)->map(function ($product) {
+            if (isset($product['nutritional_info']) && is_array($product['nutritional_info'])) {
+                $product['nutritional_info'] = json_encode($product['nutritional_info']);
+            }
+            return $product;
+        })->toArray();
         Product::insert($products);
 
     }
