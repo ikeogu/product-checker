@@ -105,7 +105,7 @@ class ProductSeeder extends Seeder
                 'manufacturer' => 'Generic Pharma Ltd',
                 'country_of_origin' => 'India',
                 'image_url' => 'https://example.com/images/sample_' . $i . '.jpg',
-                'status' => 'available',
+                'status' => 'authentic',
                 'description' => 'This is a placeholder product for testing.',
                 'active_ingredient' => 'Ingredient ' . $i,
                 'dosage_form' => 'Tablet',

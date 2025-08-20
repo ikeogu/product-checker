@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('manufacturer')->nullable();
             $table->string('country_of_origin')->nullable();
             $table->string('image_url')->nullable();
-            $table->enum('status', ['authentic', 'counterfeit', 'expired', 'pending', 'verified', 'active', 'inactive'])->default('pending');
+            $table->string('status')->default('pending');
             $table->text('description')->nullable();
 
             // Drug-specific fields
