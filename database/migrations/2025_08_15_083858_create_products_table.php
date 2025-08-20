@@ -15,7 +15,7 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->string('name');
             $table->string('category')->nullable(); // food, drink, drug
-            $table->text('barcode')->nullable()->unique();
+            $table->string('barcode')->nullable()->unique();
             $table->string('nafdac_number')->nullable();
             $table->string('batch_number')->nullable();
             $table->date('expiry_date')->nullable();
