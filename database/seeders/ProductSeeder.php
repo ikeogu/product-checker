@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
                 'nutritional_info' => null,
                 'flavour' => null,
                 'storage_instructions' => 'Store in a cool dry place below 30°C.',
-                'added_by' => 1,
+               // 'added_by' => 1,
             ],
             [
                 'name' => 'Amoxicillin 500mg Capsule',
@@ -63,7 +63,7 @@ class ProductSeeder extends Seeder
                 'nutritional_info' => null,
                 'flavour' => null,
                 'storage_instructions' => 'Store below 25°C.',
-                'added_by' => 1,
+               // 'added_by' => 1,
             ],
             [
                 'name' => 'Vitamin C 1000mg Tablet',
@@ -87,7 +87,7 @@ class ProductSeeder extends Seeder
                 'nutritional_info' => ['Vitamin C' => '1000mg'],
                 'flavour' => 'Orange',
                 'storage_instructions' => 'Keep tightly closed in a cool, dry place.',
-                'added_by' => 1,
+                //'added_by' => 1,
             ],
             // --- add 27 more products here in similar format ---
         ];
