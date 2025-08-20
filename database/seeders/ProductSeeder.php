@@ -116,7 +116,7 @@ class ProductSeeder extends Seeder
                 'nutritional_info' => ['Nutrient' => rand(10, 500) . 'mg'],
                 'flavour' => null,
                 'storage_instructions' => 'Store below 30°C.',
-                'added_by' => 1,
+               // 'added_by' => 1,
             ];
         }
 
