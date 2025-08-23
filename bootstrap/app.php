@@ -42,7 +42,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (Throwable $e, Request $request) {
-            $wantsJson = $request->is('v1/*') || $request->expectsJson();
+            $wantsJson = $request->is('api/*') || $request->expectsJson();
 
             if (!$wantsJson) {
                 return null;
