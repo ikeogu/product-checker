@@ -9,6 +9,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('/login', function () {
+    return response()->json(['message' => 'Login not available'], 404);
+})->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
 
