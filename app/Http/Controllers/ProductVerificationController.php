@@ -21,15 +21,17 @@ class ProductVerificationController extends Controller
         $validated = $request->validate([
             'barcode' => 'nullable|string|max:255',
             'text'    => 'nullable|string|max:500',
+            'code'    => 'nullable|string|max:500',
             'image'   => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
         $payload = [];
 
         // ✅ 1. Barcode
-        if (!empty($validated['barcode'])) {
-            $payload['barcode'] = $validated['barcode'];
+        if (!empty($validated['barcode']) || !empty($validated['code'])) {
+            $payload['barcode'] = $validated['barcode'] ?? $validated['code'];
         }
+
 
         // ✅ 2. Text
         if (!empty($validated['text'])) {
