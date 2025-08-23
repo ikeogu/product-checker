@@ -196,7 +196,7 @@ class ProductVerificationService
         } catch (\Exception $e) {
             return response()->json([
                 'status'  => 'error',
-                'message' => 'Image verification exception: ' . $e->getMessage(),
+                'message' => 'Image verification failed, please try again later',
             ], 500);
         }
     }
