@@ -19,6 +19,7 @@ return [
 
     // instead of '*', put your allowed origins
     'allowed_origins' => [
+        '*',
         'http://localhost:3000',  // your frontend (dev)
         'https://techativedera.com', // your production frontend
     ],
