@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('/products', [ProductController::class, 'index']);
-Route::post('/products/verify', [ProductVerificationController::class, 'verify'])->name('products.verify');
+Route::get('/products/verify', [ProductVerificationController::class, 'verify'])->name('products.verify');
