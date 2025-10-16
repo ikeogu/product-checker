@@ -1,7 +1,7 @@
 <?php
 
 
-namespace  App\Http\Services;
+namespace App\Modules\Product\Services;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Http;
