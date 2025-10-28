@@ -4,16 +4,23 @@ namespace App\Modules\Company\Controllers;
 
 use App\Http\Controllers\ApiController;
 use App\Models\Company;
+use App\Modules\Company\Resources\CompanyResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class CompanyController extends ApiController
 {
 
-    public function addChild(Request $request, Company $company)
+    /**
+     *  Add Subsidiary
+     * @param Request $request
+     * @param Company $company
+     *
+     * @response array< message: string, data: array{child_company: array}>
+     */
+    public function addSubsidiary(Request $request, Company $company)
     {
-        //$this->authorize('manage', $company); // ensure user owns the parent
-
         $data = $request->validate([
             'company_name' => 'required|string|max:255',
             'email' => 'nullable|email',
@@ -28,9 +35,23 @@ class CompanyController extends ApiController
             'parent_id' => $company->id,
         ]);
 
-        return response()->json([
-            'message' => 'Subsidiary company created successfully',
-            'child' => $child,
-        ]);
+        return  $this->successResponse("Child company created successfully", [
+            'child_company' => new CompanyResource($child),
+        ], Response::HTTP_CREATED);
+    }
+
+    /**
+     * List Subsidiaries of a Company
+     * @param Company $company
+     *
+     * @response array< message: string, data: array{child_companies: array}>
+     */
+    public function listSubsidiaries(Company $company)
+    {
+
+        $children = $company->subsidiaries()->get();
+        return $this->successResponse("Subsidiaries fetched successfully", [
+            'child_companies' => CompanyResource::collection($children),
+        ], Response::HTTP_OK);
     }
 }

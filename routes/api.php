@@ -40,8 +40,8 @@ Route::middleware('auth:sanctum')->group(function () {
         ->prefix('companies')
         ->controller(CompanyController::class)
         ->group(function () {
-            Route::post('{company}/children', 'addChildren');
-            Route::get('{company}/children', 'listChildren');
+            Route::post('{company}/subsidiary', 'addSubsidiary');
+            Route::get('{company}/subsidiaries', 'listSubsidiaries');
         });
 });
 
