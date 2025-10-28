@@ -5,12 +5,17 @@ namespace App\Modules\Company\Controllers;
 use App\Http\Controllers\ApiController;
 use App\Models\Company;
 use App\Modules\Company\Resources\CompanyResource;
+use App\Modules\Company\Services\CompanyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CompanyController extends ApiController
 {
+
+    protected function __construct(
+        protected readonly CompanyService $companyService
+    ) {}
 
     /**
      *  Add Subsidiary
@@ -29,12 +34,7 @@ class CompanyController extends ApiController
             'description' => 'nullable|string',
         ]);
 
-        $child = Company::create([
-            ...$data,
-            'user_id' => Auth::id(),
-            'parent_id' => $company->id,
-        ]);
-
+        $child = $this->companyService->createSubsidiary($company, $data);
         return  $this->successResponse("Child company created successfully", [
             'child_company' => new CompanyResource($child),
         ], Response::HTTP_CREATED);

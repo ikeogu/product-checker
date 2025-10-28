@@ -49,7 +49,11 @@ class ProductController extends ApiController
         ], Response::HTTP_OK);
     }
 
-    // Store a new product (Admin)
+    /**
+     * Create a new Product
+     * @param Request $request
+     * @response array< message: string, data: array{product: array}>
+     */
     public function store(Request $request)
     {
         $data = $request->validate([

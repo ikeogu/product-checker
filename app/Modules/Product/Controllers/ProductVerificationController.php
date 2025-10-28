@@ -16,6 +16,12 @@ class ProductVerificationController extends ApiController
     ) {}
 
 
+    /**
+     * Verify Product via barcode, text, or image
+     * @param Request $request
+     *
+     * @response array< status: string, message: string, data: array>
+     */
     public function verify(Request $request)
     {
         // ✅ Validation
