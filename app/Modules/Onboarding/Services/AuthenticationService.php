@@ -2,6 +2,7 @@
 
 namespace App\Modules\Onboarding\Services;
 
+use App\Http\Resources\UserResource;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,7 @@ class AuthenticationService
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return [
-            'user' => $user,
+            'user' => new UserResource($user),
             'token' => $token,
         ];
     }
@@ -36,7 +37,7 @@ class AuthenticationService
         $token = $user->createToken('company_auth_token')->plainTextToken;
 
         return [
-            'user' => $user,
+            'user' => new UserResource($user),
             'token' => $token,
         ];
     }
@@ -59,7 +60,7 @@ class AuthenticationService
 
         return [
             'message' => 'Login successful',
-            'user' => $user,
+            'user' => new UserResource($user),
             'token' => $token,
         ];
     }
@@ -90,18 +91,21 @@ class AuthenticationService
     {
         $user = User::where('email', $googleUser->getEmail())->first();
 
-        if (! $user) {
+        if (!$user) {
             $user = User::create([
                 'name' => $googleUser->getName(),
                 'email' => $googleUser->getEmail(),
                 'google_id' => $googleUser->getId(),
                 'provider' => 'google',
-                'password' => Hash::make(Str::random(12)), // dummy password
+                'password' => Str::random(12),
             ]);
         }
 
         $token = $user->createToken('google_auth_token')->plainTextToken;
 
-        return compact('user', 'token');
+        return [
+            'user' => new UserResource($user),
+            'token' => $token,
+        ];
     }
 }

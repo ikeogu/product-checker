@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -31,7 +32,9 @@ class User extends Authenticatable
         'email',
         'password',
         'google_id',
-        'company_id'
+        'company_id',
+        'is_company_admin',
+
     ];
 
     /**
@@ -65,6 +68,22 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_company_admin' => 'boolean',
         ];
+    }
+
+    public function company() : BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function parentCompany()
+    {
+        return $this->company()->whereNull('parent_company_id');
+    }
+
+    public function subsidiaries()
+    {
+        return $this->company()->whereNotNull('parent_company_id');
     }
 }

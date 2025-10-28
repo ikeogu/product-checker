@@ -30,7 +30,7 @@ class AuthController extends ApiController
 
     /**
      * Register Company User
-     *  @param Request $request
+     * @param Request $request
      */
     public function registerCompanyUser(Request $request)
     {

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('google_id')->nullable()->unique();
             $table->string('provider')->nullable();
+            $table->boolean('is_company_admin')->default(false);
             $table->timestamps();
         });
 
