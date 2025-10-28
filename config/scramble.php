@@ -39,12 +39,12 @@ return [
         /*
          * Define the title of the documentation's website. App name is used when this config is `null`.
          */
-        'title' => "Product Verifier API Documentation",
+        'title' => null,
 
         /*
          * Define the theme of the documentation. Available options are `light`, `dark`, and `system`.
          */
-        'theme' => 'dark',
+        'theme' => 'light',
 
         /*
          * Hide the `Try It` feature. Enabled by default.
@@ -104,7 +104,7 @@ return [
 
     'middleware' => [
         'web',
-        RestrictedDocsAccess::class,
+       // RestrictedDocsAccess::class,
     ],
 
     'extensions' => [],

@@ -1,10 +1,11 @@
 <?php
 
 
-use App\Http\Controllers\ProductVerificationController;
+
 use App\Modules\Company\Controllers\CompanyController;
 use App\Modules\Onboarding\Controllers\AuthController;
 use App\Modules\Product\Controllers\ProductController;
+use App\Modules\Product\Controllers\ProductVerificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,9 +13,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/login', function () {
-    return response()->json(['message' => 'Login not available'], 404);
-})->name('login');
+
 
 Route::prefix('auth')
     ->controller(AuthController::class)

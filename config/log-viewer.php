@@ -1,6 +1,6 @@
 <?php
 
-use Opcodes\LogViewer\Enums\FolderSortingMethod;
+use Opcodes\LogViewer\Enums\SortingMethod;
 use Opcodes\LogViewer\Enums\SortingOrder;
 use Opcodes\LogViewer\Enums\Theme;
 
@@ -97,7 +97,7 @@ return [
 
     'middleware' => [
         'web',
-        \Opcodes\LogViewer\Http\Middleware\AuthorizeLogViewer::class,
+       // \Opcodes\LogViewer\Http\Middleware\AuthorizeLogViewer::class,
     ],
 
     /*
@@ -111,7 +111,7 @@ return [
 
     'api_middleware' => [
         \Opcodes\LogViewer\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-        \Opcodes\LogViewer\Http\Middleware\AuthorizeLogViewer::class,
+       // \Opcodes\LogViewer\Http\Middleware\AuthorizeLogViewer::class,
     ],
 
     'api_stateful_domains' => env('LOG_VIEWER_API_STATEFUL_DOMAINS') ? explode(',', env('LOG_VIEWER_API_STATEFUL_DOMAINS')) : null,
@@ -283,10 +283,13 @@ return [
         'use_local_storage' => true,
 
         // Method to sort the folders. Other options: `Alphabetical`, `ModifiedTime`
-        'folder_sorting_method' => FolderSortingMethod::ModifiedTime,
+        'folder_sorting_method' => SortingMethod::ModifiedTime,
 
         // Order to sort the folders. Other options: `Ascending`, `Descending`
         'folder_sorting_order' => SortingOrder::Descending,
+
+        // Method for sorting log-files into directories. Other options: `Alphabetical`, `ModifiedTime`
+        'file_sorting_method' => SortingMethod::ModifiedTime,
 
         // Order to sort the logs. Other options: `Ascending`, `Descending`
         'log_sorting_order' => SortingOrder::Descending,

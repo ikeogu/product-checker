@@ -11,15 +11,13 @@
     "require": {
         "php": "^8.2",
         "dedoc/scramble": "^0.12.30",
-        "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
-        "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
+        "opcodesio/log-viewer": "^3.21",
         "spatie/laravel-permission": "^6.21",
-        "tightenco/ziggy": "^2.0",
-        "zojatech/devguard": "dev-main"
+        "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -84,11 +82,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Zojatech-Team/DevGuard"
-        }
-    ]
+    "prefer-stable": true
 }

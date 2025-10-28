@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Modules\Product\Controllers;
 
+use App\Http\Controllers\ApiController;
 use App\Modules\Product\Services\ProductVerificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
-class ProductVerificationController extends Controller
+class ProductVerificationController extends ApiController
 {
 
     public function __construct(
